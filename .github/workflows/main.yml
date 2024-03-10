@@ -29,8 +29,8 @@ jobs:
       - name: Set up AWS credentials
         shell: bash
         env:
-          AWS_ACCESS_KEY_ID: AKIAWFK72MKAHKRB6FMT
-          AWS_SECRET_ACCESS_KEY: vFdz7ectK40FV9Ay4M/hZPzCWxye2+QjgbRUX7YN
+          AWS_ACCESS_KEY_ID: your_access_key
+          AWS_SECRET_ACCESS_KEY: your_secret_key
         run: |
           mkdir -p ~/.aws
           touch ~/.aws/credentials
@@ -40,7 +40,7 @@ jobs:
           
       # Copy the file to the S3 bucket
       - name: Upload to S3
-        run: aws s3 cp ./first_job.py s3://abcc-any-company/ --region ap-south-1
+        run: aws s3 cp ./first_job.py s3://aws-glue-assets-<Account_ID>-ap-south-1/scripts/ --region ap-south-1
       
       # Remove stored credentials file
       - name: Cleanup
